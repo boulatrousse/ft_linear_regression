@@ -2,18 +2,19 @@ import os
 import csv
 import sys
 
-# def is_row_valid(row1, row2, row_len):
+def row_is_valid(row):
     
-#     if int(row1) < 0 or int(row2) < 0:
-#         print("CSV data cannot be negative.")
-#         return False
-#     if row1.isnumeric() == False or row2.isnumeric() == False:
-#         print("CSV file must contain only numbers.")
-#         return False
-#     if row_len != 2:
-#         print("CSV lines must contain only 2 rows.")
-#         return False
-#     return True
+    row1 = row[0]
+    row2 = row[1]
+    row_len = len(row)
+
+    if not row1.isnumeric() or not row2.isnumeric():
+        print("CSV file must contain only numbers.")
+        return False
+    if row_len != 2:
+        print("CSV lines must contain only 2 rows.")
+        return False
+    return True
 
 def get_data(filename):
     
@@ -30,27 +31,21 @@ def get_data(filename):
                 pass
 
             for row in reader:
-                if int(row[0]) < 0 or int(row[1]) < 0:
-                    print("CSV data cannot be negative.")
-                    raise
-                if row[0].isnumeric() == False or row[1].isnumeric() == False:
-                    print("CSV file must contain only numbers.")
-                    raise
-                if len(row) != 2:
-                    print("CSV lines must contain only 2 rows.")
+                valid_row = row_is_valid(row)
+                if not valid_row:
                     raise
                 
                 data_line = { 'km': row[0], 'price': row[1] }
                 data.append(data_line)
             
     except:
-        print("EXIT")
         exit(1)
         
     for item in data:
         print(item['km'], "-", item['price'])
-           
-           
+        
+    return data
+
 #-------------------------------------------------------------------------
  
 def main():
