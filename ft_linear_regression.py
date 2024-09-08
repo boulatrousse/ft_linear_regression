@@ -6,11 +6,17 @@ from utils.create_json_file import create_json_file
 
 class LinearRegression:
     
-    def __init__(self, data):
+    def __init__(self, data, learning_rate):
         print("Init of LR class")
         self.data = data
+        self.data_size = len(data)
         self.theta0 = 0
         self.theta1 = 0
+        self.least_sq_sum = 0
+        self.learning_rate = learning_rate
+
+        
+#-----------------------------------------------    
         
 def main():
     args = sys.argv
@@ -22,12 +28,7 @@ def main():
     data = get_data(args[1])
     create_json_file()
     
-    print("data = ")
-    for item in data:
-        print(item['km'], "-", item['price'])
-        
-    print("\n")
-    LinearRegression(data)
+    LinearRegression(data, 0.75)
     
 if __name__ == "__main__":
     main()
