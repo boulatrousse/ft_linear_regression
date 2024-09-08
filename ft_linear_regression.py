@@ -4,7 +4,14 @@ import sys
 from utils.get_data import get_data
 from utils.create_json_file import create_json_file
 
-
+class LinearRegression:
+    
+    def __init__(self, data):
+        print("Init of LR class")
+        self.data = data
+        self.theta0 = 0
+        self.theta1 = 0
+        
 def main():
     args = sys.argv
 
