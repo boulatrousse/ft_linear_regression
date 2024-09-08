@@ -1,7 +1,7 @@
 import os
 import sys
 
-from utils.parsing import get_data
+from utils.get_data import get_data
 from utils.create_json_file import create_json_file
 
 
@@ -12,8 +12,8 @@ def main():
         print("ERROR: usage: python parsing.py [data.csv].")
         exit(1)
         
-    create_json_file()
     data = get_data(args[1])
+    create_json_file()
     
     print("data = ")
     for item in data:

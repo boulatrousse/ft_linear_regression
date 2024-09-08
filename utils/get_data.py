@@ -6,6 +6,7 @@ def row_is_valid(row):
     row1 = row[0]
     row2 = row[1]
     row_len = len(row)
+    
     if not row1.isnumeric() or not row2.isnumeric():
         print("CSV file must contain only numbers.")
         return False
@@ -18,6 +19,7 @@ def get_data(filename):
     
     if not filename.endswith('.csv'):
         print("Wrong extension : file must be a [.csv].")
+        exit(1)
         
     data = []
     try:
