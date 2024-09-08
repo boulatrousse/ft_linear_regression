@@ -14,9 +14,3 @@ def create_json_file():
     except:
         print("An error occured while creating the json file.")
         exit(1)
-        
-def main():
-    create_json_file()
-    
-if __name__ == "__main__":
-    main()

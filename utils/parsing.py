@@ -2,8 +2,6 @@ import os
 import csv
 import sys
 
-from create_json_file import create_json_file
-
 def row_is_valid(row):
     row1 = row[0]
     row2 = row[1]
@@ -18,9 +16,12 @@ def row_is_valid(row):
 
 def get_data(filename):
     
+    if not filename.endswith('.csv'):
+        print("Wrong extension : file must be a [.csv].")
+        
     data = []
     try:
-        open_filename = os.path.abspath(os.path.join("../", filename))
+        open_filename = os.path.abspath(os.path.join("../ft_linear_regression", filename))
         
         with open(open_filename, 'r', newline='') as csvfile:
             reader = csv.reader(csvfile)
@@ -36,23 +37,7 @@ def get_data(filename):
                 data_line = { 'km': row[0], 'price': row[1] }
                 data.append(data_line)
     except:
+        print("An error occured while trying to open the .csv.")
         exit(1)
         
     return data
- 
-def main():
-    args = sys.argv
-
-    if len(args) != 2:
-        print("ERROR: usage: python parsing.py [data.csv].")
-        exit(1)
-        
-    create_json_file()
-    data = get_data(args[1])
-    
-    print("data = ")
-    for item in data:
-        print(item['km'], "-", item['price'])
-    
-if __name__ == "__main__":
-    main()
