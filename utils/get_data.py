@@ -36,7 +36,7 @@ def get_data(filename):
                 if not row_is_valid(row):
                     raise
                 
-                data_line = { 'km': row[0], 'price': row[1] }
+                data_line = { 'km': float(row[0]), 'price': float(row[1]) }
                 data.append(data_line)
     except:
         print("An error occured while trying to open the .csv.")
