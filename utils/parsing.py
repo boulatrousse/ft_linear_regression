@@ -2,6 +2,8 @@ import os
 import csv
 import sys
 
+from write_json import create_json_file
+
 def row_is_valid(row):
     row1 = row[0]
     row2 = row[1]
@@ -37,11 +39,15 @@ def get_data(filename):
         exit(1)
         
     return data
-
-#-------------------------------------------------------------------------
  
 def main():
     args = sys.argv
+
+    if len(args) != 2:
+        print("ERROR: usage: python parsing.py [data.csv].")
+        exit(1)
+        
+    create_json_file()
     data = get_data(args[1])
     
     print("data = ")
