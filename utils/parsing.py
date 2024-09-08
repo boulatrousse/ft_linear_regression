@@ -2,7 +2,7 @@ import os
 import csv
 import sys
 
-from write_json import create_json_file
+from create_json_file import create_json_file
 
 def row_is_valid(row):
     row1 = row[0]
