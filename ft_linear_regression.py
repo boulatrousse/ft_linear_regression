@@ -25,6 +25,9 @@ def main():
     print("data = ")
     for item in data:
         print(item['km'], "-", item['price'])
+        
+    print("\n")
+    LinearRegression(data)
     
 if __name__ == "__main__":
     main()
