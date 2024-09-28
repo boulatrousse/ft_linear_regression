@@ -17,4 +17,3 @@ def data_normalization(data, arg):
         normalize_list.append(n)
 
     return normalize_list
-        

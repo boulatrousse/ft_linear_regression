@@ -15,4 +15,3 @@ def create_json_file():
     except:
         print_error("An error occured while creating the json file.")
         exit(1)
-    print("Json file created.")
