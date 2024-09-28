@@ -3,8 +3,13 @@ import sys
 from utils.get_data import get_data
 from utils.errors import print_error
 from utils.create_json_file import create_json_file
+from utils.normalization import data_normalization
 
 g_learning_rate = 0.75
+
+class args:
+    KM = 'km'
+    PR = 'price'
 
 class LinearRegression:
     
@@ -16,6 +21,9 @@ class LinearRegression:
         self.theta1 = 0
         self.least_sq_sum = 0
         self.learning_rate = learning_rate
+        self.normalize_km_list = data_normalization(data, args.KM)
+        self.normalize_price_list = data_normalization(data, args.PR)
+
 
         
 #-----------------------------------------------    
