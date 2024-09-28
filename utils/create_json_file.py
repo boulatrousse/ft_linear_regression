@@ -1,4 +1,5 @@
 import json
+from utils.errors import print_error
 
 def create_json_file():
     dict = {
@@ -12,5 +13,5 @@ def create_json_file():
         with open("../params.json", "w") as outfile:
             outfile.write(json_object)
     except:
-        print("An error occured while creating the json file.")
+        print_error("An error occured while creating the json file.")
         exit(1)
