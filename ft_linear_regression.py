@@ -4,6 +4,8 @@ from utils.get_data import get_data
 from utils.errors import print_error
 from utils.create_json_file import create_json_file
 
+g_learning_rate = 0.75
+
 class LinearRegression:
     
     def __init__(self, data, learning_rate):
@@ -28,7 +30,7 @@ def main():
     data = get_data(args[1])
     create_json_file()
     
-    LinearRegression(data, 0.75)
+    LinearRegression(data, g_learning_rate)
     
 if __name__ == "__main__":
     main()

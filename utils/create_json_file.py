@@ -10,8 +10,9 @@ def create_json_file():
     try:
         json_object = json.dumps(dict)
         
-        with open("../params.json", "w") as outfile:
+        with open("params.json", "w") as outfile:
             outfile.write(json_object)
     except:
         print_error("An error occured while creating the json file.")
         exit(1)
+    print("Json file created.")
