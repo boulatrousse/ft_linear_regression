@@ -3,6 +3,8 @@ from utils.get_data import get_data
 from utils.errors import print_error
 import sys
 import json
+import time
+import numpy as np
 import matplotlib.pyplot as plt
 
 g_learning_rate = 0.75
@@ -103,6 +105,7 @@ class LinearRegression:
             self.print_values(tmp_cost)
             self.previous_cost = tmp_cost
         
+        
         self.get_thetas()
         self.write_in_json_file()
 
@@ -113,10 +116,17 @@ class LinearRegression:
         ax.set_title('Price of a car for a given mileage')
         ax.set_xlabel('Price')
         ax.set_ylabel('Mileage')
+        ax.plot(self.km_list, self.get_list(), 'r')
+        plt.show()
 
 
-
-
+    def get_list(self):
+        list = []
+        for i in range(0, self.data_size):
+            tmp = self.theta0 + (self.theta1 * self.km_list[i])
+            list.append(tmp)
+        return list
+            
 
 def main():
     args = sys.argv
