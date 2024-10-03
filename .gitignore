@@ -1,5 +1,4 @@
 env/
-params.json
 __pycache__
 utils/__pycache__
 Makefile

@@ -1,8 +1,11 @@
 from utils.normalization import data_normalization, get_list
+from utils.get_data import get_data
 from utils.errors import print_error
-import time
+from utils.create_json_file import create_json_file
+import sys
 import json
 
+g_learning_rate = 0.75
 g_max_iteration = 5000
 g_min_slope = 0.0000001
 
@@ -102,3 +105,20 @@ class LinearRegression:
         
         self.get_thetas()
         self.write_in_json_file()
+
+
+def main():
+    args = sys.argv
+
+    if len(args) != 2:
+        print_error("ERROR: usage: python parsing.py [data.csv].")
+        exit(1)
+        
+    data = get_data(args[1])
+    
+    model = LinearRegression(data, g_learning_rate)
+    model.train_model()
+
+    
+if __name__ == "__main__":
+    main()
