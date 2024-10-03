@@ -1,6 +1,7 @@
 from utils.normalization import data_normalization, get_list
-from utils.create_json_file import create_json_file
+from utils.errors import print_error
 import time
+import json
 
 g_max_iteration = 5000
 g_min_slope = 0.0000001
@@ -64,15 +65,30 @@ class LinearRegression:
         self.a = self.previous_a - (self.learning_rate * derivative_a)
         self.b = self.previous_b - (self.learning_rate * derivative_b)
 
+    def print_values(self, tmp_cost):
+        print("Cost:", tmp_cost, "a:", self.a, "b:", self.b)
+        # time.sleep(0.05)
+
     def get_thetas(self):
         delta_x = max(self.km_list) - min(self.km_list)
         delta_y = max(self.price_list) - min(self.price_list)
         self.theta0 = ((delta_y * self.a) + min(self.price_list) - self.b * (delta_y / delta_x) * min(self.km_list))
         self.theta1 = delta_y * self.b / delta_x
 
-    def print_values(self, tmp_cost):
-        print("Cost:", tmp_cost, "a:", self.a, "b:", self.b)
-        time.sleep(0.05)
+    def write_in_json_file(self):
+        dict = {
+            'theta0': self.theta0,
+            'theta1': self.theta1,
+        }
+    
+        try:
+            json_object = json.dumps(dict)
+            
+            with open("params.json", "w") as outfile:
+                outfile.write(json_object)
+        except:
+            print_error("An error occured while creating the json file.")
+            exit(1)
 
     def train_model(self):
         for i in range(0, g_max_iteration):
@@ -85,4 +101,4 @@ class LinearRegression:
             self.previous_cost = tmp_cost
         
         self.get_thetas()
-        create_json_file(self.theta0, self.theta1)
+        self.write_in_json_file()

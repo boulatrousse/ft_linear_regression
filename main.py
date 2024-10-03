@@ -14,6 +14,7 @@ def main():
         exit(1)
         
     data = get_data(args[1])
+    create_json_file()
     
     model = LinearRegression(data, g_learning_rate)
     model.train_model()
