@@ -1,10 +1,10 @@
 import json
 from utils.errors import print_error
 
-def create_json_file():
+def create_json_file(theta0, theta1):
     dict = {
-        'theta0': 0,
-        'theta1': 0,
+        'theta0': theta0,
+        'theta1': theta1,
     }
     
     try:
