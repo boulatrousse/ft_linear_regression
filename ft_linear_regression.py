@@ -118,13 +118,12 @@ class LinearRegression:
         self.ax.set_title('Price of a car for a given mileage')
         self.ax.set_xlabel('Price')
         self.ax.set_ylabel('Mileage')
-        self.ax.plot(self.km_list, self.get_line_list(), 'r')
+        self.ax.plot(self.km_list, self.get_line_coord(), 'r')
 
         plt.draw()
         plt.pause(0.075)
 
-
-    def get_line_list(self):
+    def get_line_coord(self):
         list = []
         for i in range(0, self.data_size):
             tmp = self.theta0 + (self.theta1 * self.km_list[i])
@@ -143,7 +142,6 @@ def main():
     
     model = LinearRegression(data, g_learning_rate)
     model.train_model()
-    # model.display()
 
     
 if __name__ == "__main__":
