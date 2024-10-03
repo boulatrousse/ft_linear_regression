@@ -1,9 +1,9 @@
 from utils.normalization import data_normalization, get_list
 from utils.get_data import get_data
 from utils.errors import print_error
-from utils.create_json_file import create_json_file
 import sys
 import json
+import matplotlib.pyplot as plt
 
 g_learning_rate = 0.75
 g_max_iteration = 5000
@@ -106,6 +106,17 @@ class LinearRegression:
         self.get_thetas()
         self.write_in_json_file()
 
+    def display(self):
+        fig, ax = plt.subplots()
+
+        ax.plot(self.km_list, self.price_list, 'go')
+        ax.set_title('Price of a car for a given mileage')
+        ax.set_xlabel('Price')
+        ax.set_ylabel('Mileage')
+
+
+
+
 
 def main():
     args = sys.argv
@@ -118,6 +129,7 @@ def main():
     
     model = LinearRegression(data, g_learning_rate)
     model.train_model()
+    model.display()
 
     
 if __name__ == "__main__":
