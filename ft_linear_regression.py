@@ -3,8 +3,6 @@ from utils.get_data import get_data
 from utils.errors import print_error
 import sys
 import json
-import time
-import numpy as np
 import matplotlib.pyplot as plt
 
 g_learning_rate = 0.75
@@ -34,6 +32,9 @@ class LinearRegression:
         self.price_list = get_list(data, args.PR)
         self.normalized_km_list = data_normalization(data, args.KM)
         self.normalized_price_list = data_normalization(data, args.PR)
+
+        plt.ion()
+        fig, self.ax = plt.subplots()
 
     def get_prediction(self, mileage):
         return (self.a + (self.b * mileage))
@@ -72,7 +73,6 @@ class LinearRegression:
 
     def print_values(self, tmp_cost):
         print("Cost:", tmp_cost, "a:", self.a, "b:", self.b)
-        # time.sleep(0.05)
 
     def get_thetas(self):
         delta_x = max(self.km_list) - min(self.km_list)
@@ -97,6 +97,8 @@ class LinearRegression:
 
     def train_model(self):
         for i in range(0, g_max_iteration):
+            self.get_thetas()
+            self.display()
             tmp_cost = self.get_cost()
             if abs(tmp_cost - self.previous_cost) < g_min_slope:
                 print("Cost function converged after", i, "iterations with cost", tmp_cost)
@@ -105,22 +107,24 @@ class LinearRegression:
             self.print_values(tmp_cost)
             self.previous_cost = tmp_cost
         
-        
+        plt.ioff()
+        plt.show()
         self.get_thetas()
         self.write_in_json_file()
 
     def display(self):
-        fig, ax = plt.subplots()
+        self.ax.clear()
+        self.ax.plot(self.km_list, self.price_list, 'co')
+        self.ax.set_title('Price of a car for a given mileage')
+        self.ax.set_xlabel('Price')
+        self.ax.set_ylabel('Mileage')
+        self.ax.plot(self.km_list, self.get_line_list(), 'r')
 
-        ax.plot(self.km_list, self.price_list, 'go')
-        ax.set_title('Price of a car for a given mileage')
-        ax.set_xlabel('Price')
-        ax.set_ylabel('Mileage')
-        ax.plot(self.km_list, self.get_list(), 'r')
-        plt.show()
+        plt.draw()
+        plt.pause(0.075)
 
 
-    def get_list(self):
+    def get_line_list(self):
         list = []
         for i in range(0, self.data_size):
             tmp = self.theta0 + (self.theta1 * self.km_list[i])
@@ -139,7 +143,7 @@ def main():
     
     model = LinearRegression(data, g_learning_rate)
     model.train_model()
-    model.display()
+    # model.display()
 
     
 if __name__ == "__main__":
