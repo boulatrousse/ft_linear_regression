@@ -72,12 +72,11 @@ class LinearRegression:
 
     def print_values(self, tmp_cost):
         print("Cost:", tmp_cost, "a:", self.a, "b:", self.b)
+        time.sleep(0.05)
 
     def train_model(self):
         for i in range(0, g_max_iteration):
             tmp_cost = self.get_cost()
-            print(tmp_cost)
-            time.sleep(0.05)
             if abs(tmp_cost - self.previous_cost) < g_min_slope:
                 print("Cost function converged after", i, "iterations with cost", tmp_cost)
                 break
