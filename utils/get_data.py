@@ -39,6 +39,9 @@ def get_data(filename):
                 
                 data_line = { 'km': float(row[0]), 'price': float(row[1]) }
                 data.append(data_line)
+            
+            if not data or len(data) <= 1:
+                raise
     except:
         print_error("An error occured while trying to open the .csv.", True)
         
