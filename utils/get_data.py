@@ -28,12 +28,13 @@ def get_data(filename):
         
         with open(open_filename, 'r', newline='') as csvfile:
             reader = csv.reader(csvfile)
-            try:
-                next(reader)
-            except StopIteration:
-                pass
+            first_line = next(reader)
+            if first_line[0].isdigit():
+                print_error("First row of the .csv must be the header.", False)
+                raise
 
             for row in reader:
+                print(row)
                 if not row_is_valid(row):
                     raise
                 
