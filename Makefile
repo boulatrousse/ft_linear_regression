@@ -13,6 +13,7 @@ all:
 	@echo "       make json  (set thetas parameters to 0)$(END)"
 
 setup:
+	@python -m venv env
 	@pip install -r utils/requirements.txt
 
 price:
