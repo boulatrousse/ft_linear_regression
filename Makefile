@@ -1,14 +1,16 @@
 GREEN					= \033[1;32m
+UNDERLINE				= \e[4m
+END_UNDERLINE			= \e[24m
 PURPLE					= \033[1;35m
 BLUE			        = \033[0;36m
 END						= \033[0m
 
 DATA					= data.csv
 all:
-	@echo "$(GREEN)Usage: make setup (install requirements)"
+	@echo "$(GREEN)$(UNDERLINE)Usage$(END_UNDERLINE): make setup (install requirements)"
 	@echo "       make price (predict price of a car)"
 	@echo "       make train (train the model)"
-	@echo "       make json  (set thetas parameters to 0)$(EOC)"
+	@echo "       make json  (set thetas parameters to 0)$(END)"
 
 setup:
 	@pip install -r utils/requirements.txt
