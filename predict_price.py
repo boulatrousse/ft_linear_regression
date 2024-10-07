@@ -4,7 +4,7 @@ import json
 
 def is_input_valid(input):
     if not input.isdigit():
-        print_error("Wrong format, please enter a number equal or greater than 0.")
+        print_error("Wrong format, please enter a number equal or greater than 0.", False)
         return False
     return True
 
@@ -13,17 +13,15 @@ def get_thetas():
         with open('params.json', 'r') as file:
             data = json.load(file)
     except:
-        print_error("An error occured while opening the json file.")
-        exit(1)
+        print_error("An error occured while opening the json file.", True)
 
     try:
         theta0 = data['theta0']
         theta1 = data['theta1']
     except KeyError:
-        print_error("An error occured while getting the thetas parameters.")
-        exit(1)
+        print_error("An error occured while getting the thetas parameters.", True)
     except:
-        print_error("An error occured while parsing the json file.")
+        print_error("An error occured while parsing the json file.", False)
 
     return theta0, theta1
 

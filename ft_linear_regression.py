@@ -92,8 +92,7 @@ class LinearRegression:
             with open("params.json", "w") as outfile:
                 outfile.write(json_object)
         except:
-            print_error("An error occured while creating the json file.")
-            exit(1)
+            print_error("An error occured while creating the json file.", True)
 
     def train_model(self):
         for i in range(0, g_max_iteration):
@@ -135,8 +134,7 @@ def main():
     args = sys.argv
 
     if len(args) != 2:
-        print_error("ERROR: usage: python parsing.py [data.csv].")
-        exit(1)
+        print_error("ERROR: usage: python parsing.py [data.csv].", True)
         
     data = get_data(args[1])
     
