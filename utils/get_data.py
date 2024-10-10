@@ -34,7 +34,6 @@ def get_data(filename):
                 raise
 
             for row in reader:
-                print(row)
                 if not row_is_valid(row):
                     raise
                 
