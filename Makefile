@@ -25,5 +25,6 @@ train:
 json:
 	@echo "{\"theta0\": 0, \"theta1\": 0}" > params.json
 
-
-
+clean:
+	@rm -rf __pycache__
+	@rm -rf utils/__pycache__
