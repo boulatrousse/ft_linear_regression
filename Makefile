@@ -8,7 +8,7 @@ END						= \033[0m
 DATA					= data.csv
 all:
 	@echo "$(GREEN)$(UNDERLINE)Usage$(END_UNDERLINE): make setup (install requirements)"
-	@echo "       make price (predict price of a car)"
+	@echo "       make predict (predict price of a car)"
 	@echo "       make train (train the model)"
 	@echo "       make json  (set thetas parameters to 0)$(END)"
 
@@ -16,7 +16,7 @@ setup:
 	@python3 -m venv env
 	@pip install -r utils/requirements.txt
 
-price:
+predict:
 	@python predict_price.py
 
 train:
