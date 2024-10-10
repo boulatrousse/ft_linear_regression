@@ -24,7 +24,8 @@ def get_data(filename):
         
     data = []
     try:
-        open_filename = os.path.abspath(os.path.join("../ft_linear_regression", filename))
+        cwd = os.getcwd()
+        open_filename = os.path.abspath(os.path.join("../", cwd, filename))
         
         with open(open_filename, 'r', newline='') as csvfile:
             reader = csv.reader(csvfile)
