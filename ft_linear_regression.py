@@ -5,7 +5,7 @@ import sys
 import json
 import matplotlib.pyplot as plt
 
-g_learning_rate = 20
+g_learning_rate = 0.75
 g_max_iteration = 5000
 g_min_slope = 0.0000001
 
