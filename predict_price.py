@@ -35,7 +35,7 @@ def predict_price():
 
     price = theta0 + (theta1 * mileage)
     if price < 0:
-        print("Error: Price is negative.")
+        print_error("Error: Price is negative.")
     else:
         print("Predicted price of the car is: ", str(price))
     
