@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 g_learning_rate = 0.75
 g_max_iteration = 5000
 g_min_slope = 0.0000001
+g_display_speed = 0.075
 
 class args:
     KM = 'km'
@@ -123,7 +124,7 @@ class LinearRegression:
         self.ax.plot(self.km_list, self.get_line_coord(), 'r')
 
         plt.draw()
-        plt.pause(0.075)
+        plt.pause(g_display_speed)
 
     def get_line_coord(self):
         list = []
