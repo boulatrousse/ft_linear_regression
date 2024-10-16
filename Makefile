@@ -7,13 +7,16 @@ END						= \033[0m
 
 DATA					= data.csv
 all:
-	@echo "$(GREEN)$(UNDERLINE)Usage$(END_UNDERLINE): make setup    (install requirements)"
+	@echo "$(GREEN)$(UNDERLINE)Usage$(END_UNDERLINE): make setup    (install virtual env)"
+	@echo "       make req      (install matplotlib)"
 	@echo "       make predict  (predict price of a car)"
 	@echo "       make train    (train the model)"
-	@echo "       make json     (set thetas parameters to 0)$(END)"
+	@echo "       make json     (reset json file)$(END)"
 
 setup:
 	@python3 -m venv env
+
+req:
 	@pip install -r utils/requirements.txt
 
 predict:
