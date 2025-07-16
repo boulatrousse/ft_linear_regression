@@ -20,10 +20,10 @@ req:
 	@pip install -r utils/requirements.txt
 
 predict:
-	@python predict_price.py
+	@python3 predict_price.py
 
 train:
-	@python ft_linear_regression.py $(DATA)
+	@python3 ft_linear_regression.py $(DATA)
 
 json:
 	@echo "{\"theta0\": 0, \"theta1\": 0}" > params.json
