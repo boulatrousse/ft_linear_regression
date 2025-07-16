@@ -128,8 +128,8 @@ class LinearRegression:
         self.ax.clear()
         self.ax.plot(self.km_list, self.price_list, 'co')
         self.ax.set_title('Price of a car for a given mileage')
-        self.ax.set_xlabel('Price')
-        self.ax.set_ylabel('Mileage')
+        self.ax.set_xlabel('Mileage')
+        self.ax.set_ylabel('Price')
         self.ax.plot(self.km_list, self.get_line_coord(), 'r')
 
         plt.draw()
