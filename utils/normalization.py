@@ -5,8 +5,10 @@ def get_list(data, arg):
         list.append(n.get(arg))
     return list
 
+
 def normalize(list, data):
     return ((data - min(list)) / (max(list) - min(list)))
+
 
 def data_normalization(data, arg):
     list = get_list(data, arg)

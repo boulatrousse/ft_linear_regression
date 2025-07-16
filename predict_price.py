@@ -8,6 +8,7 @@ def is_input_valid(input):
         return False
     return True
 
+
 def get_thetas():
     try:
         with open('params.json', 'r') as file:
@@ -24,6 +25,7 @@ def get_thetas():
         print_error("An error occured while parsing the json file.", False)
 
     return theta0, theta1
+
 
 def predict_price():
     input_mileage = input("Enter a mileage: ")

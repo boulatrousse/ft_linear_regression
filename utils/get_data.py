@@ -15,6 +15,7 @@ def row_is_valid(row):
         return False
     return True
 
+
 def get_data(filename):
     
     if not filename.endswith('.csv'):

@@ -37,8 +37,10 @@ class LinearRegression:
         plt.ion()
         fig, self.ax = plt.subplots()
 
+
     def get_prediction(self, mileage):
         return (self.a + (self.b * mileage))
+    
     
     def get_cost(self):
         cost = 0
@@ -52,6 +54,7 @@ class LinearRegression:
                 print_error("Overflow error. You should check if the learning rate is not too high.", True)
         
         return (1 / (2 * self.data_size)) * cost
+    
     
     def get_derivative(self):
         derivative_a = float(0)
@@ -67,6 +70,7 @@ class LinearRegression:
 
         return derivative_a, derivative_b
     
+    
     def gradient_descent(self):
         derivative_a, derivative_b = self.get_derivative()
 
@@ -75,14 +79,17 @@ class LinearRegression:
         self.a = self.previous_a - (self.learning_rate * derivative_a)
         self.b = self.previous_b - (self.learning_rate * derivative_b)
 
+
     def print_values(self, tmp_cost):
         print("Cost:", tmp_cost, "a:", self.a, "b:", self.b)
+
 
     def get_thetas(self):
         delta_x = max(self.km_list) - min(self.km_list)
         delta_y = max(self.price_list) - min(self.price_list)
         self.theta0 = ((delta_y * self.a) + min(self.price_list) - self.b * (delta_y / delta_x) * min(self.km_list))
         self.theta1 = delta_y * self.b / delta_x
+
 
     def write_in_json_file(self):
         dict = {
@@ -97,6 +104,7 @@ class LinearRegression:
                 outfile.write(json_object)
         except:
             print_error("An error occured while creating the json file.", True)
+
 
     def train_model(self):
         for i in range(0, g_max_iteration):
@@ -115,6 +123,7 @@ class LinearRegression:
         self.get_thetas()
         self.write_in_json_file()
 
+
     def display(self):
         self.ax.clear()
         self.ax.plot(self.km_list, self.price_list, 'co')
@@ -125,6 +134,7 @@ class LinearRegression:
 
         plt.draw()
         plt.pause(g_display_speed)
+
 
     def get_line_coord(self):
         list = []
