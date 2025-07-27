@@ -1,9 +1,4 @@
-def get_list(data, arg):
-    list = []
-
-    for n in data:
-        list.append(n.get(arg))
-    return list
+from get_data import get_list
 
 
 def normalize(list, data):

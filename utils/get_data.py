@@ -2,6 +2,14 @@ import os
 import csv
 from utils.errors import print_error
 
+def get_list(data, arg):
+    list = []
+
+    for n in data:
+        list.append(n.get(arg))
+    return list
+
+
 def row_is_valid(row):
     row1 = row[0]
     row2 = row[1]
