@@ -16,7 +16,7 @@ class args:
 
 class LinearRegression:
     
-    def __init__(self, data, learning_rate):
+    def __init__(self, data: list[str], learning_rate: float):
         self.data = data
         self.learning_rate = learning_rate
 
@@ -28,6 +28,9 @@ class LinearRegression:
         self.previous_cost = 0
         self.theta0 = 0
         self.theta1 = 0
+        
+        if self.data_size == 0:
+            print_error("Data size cannot be 0.", True)
 
         self.km_list = get_list(data, args.KM)
         self.price_list = get_list(data, args.PR)
@@ -38,11 +41,11 @@ class LinearRegression:
         fig, self.ax = plt.subplots()
 
 
-    def get_prediction(self, mileage):
+    def get_prediction(self, mileage: float) -> float:
         return (self.a + (self.b * mileage))
     
     
-    def get_cost(self):
+    def get_cost(self) -> float:
         cost = 0
 
         for i in range(0, self.data_size):
@@ -56,7 +59,7 @@ class LinearRegression:
         return (1 / (2 * self.data_size)) * cost
     
     
-    def get_derivative(self):
+    def get_derivative(self) -> tuple[float, float]:
         derivative_a = float(0)
         derivative_b = float(0)
 
@@ -80,7 +83,7 @@ class LinearRegression:
         self.b = self.previous_b - (self.learning_rate * derivative_b)
 
 
-    def print_values(self, tmp_cost):
+    def print_values(self, tmp_cost: float):
         print("Cost:", tmp_cost, "a:", self.a, "b:", self.b)
 
 
@@ -136,7 +139,7 @@ class LinearRegression:
         plt.pause(g_display_speed)
 
 
-    def get_line_coord(self):
+    def get_line_coord(self) -> list[float]:
         list = []
         for i in range(0, self.data_size):
             tmp = self.theta0 + (self.theta1 * self.km_list[i])

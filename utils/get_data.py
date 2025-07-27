@@ -2,7 +2,7 @@ import os
 import csv
 from utils.errors import print_error
 
-def get_list(data, arg):
+def get_list(data: list[str], arg: str) -> list[str]:
     list = []
 
     for n in data:
@@ -10,7 +10,7 @@ def get_list(data, arg):
     return list
 
 
-def row_is_valid(row):
+def row_is_valid(row: list[str]) -> bool:
     row1 = row[0]
     row2 = row[1]
     row_len = len(row)
@@ -24,7 +24,7 @@ def row_is_valid(row):
     return True
 
 
-def get_data(filename):
+def get_data(filename: str) -> list[str]:
     
     if not filename.endswith('.csv'):
         print_error("Wrong extension : file must be a [.csv].", True)

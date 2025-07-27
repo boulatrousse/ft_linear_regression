@@ -3,7 +3,7 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
 
-def print_error(message, is_exit):
+def print_error(message: str, is_exit: bool):
     print(f"{bcolors.BOLD}{bcolors.FAIL}{message}{bcolors.ENDC}")
 
     if is_exit:

@@ -2,14 +2,14 @@ from utils.errors import print_error
 from utils.create_json_file import create_json_file
 import json
 
-def is_input_valid(input):
+def is_input_valid(input: str) -> bool:
     if not input.isdigit():
         print_error("Wrong format, please enter a number equal or greater than 0.", False)
         return False
     return True
 
 
-def get_thetas():
+def get_thetas() -> tuple[float, float]:
     try:
         with open('params.json', 'r') as file:
             data = json.load(file)

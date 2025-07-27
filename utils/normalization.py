@@ -1,16 +1,16 @@
-from get_data import get_list
+from utils.get_data import get_list
 
 
-def normalize(list, data):
+def normalize(list: list[str], data: str):
     return ((data - min(list)) / (max(list) - min(list)))
 
 
-def data_normalization(data, arg):
+def data_normalization(data: list[str], arg: str):
     list = get_list(data, arg)
-    normalize_list = []
+    normalized_list = []
 
     for d in list:
         n = normalize(list, d)
-        normalize_list.append(n)
+        normalized_list.append(n)
 
-    return normalize_list
+    return normalized_list
