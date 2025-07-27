@@ -1,5 +1,7 @@
 import json
+
 from utils.errors import print_error
+
 
 def create_json_file():
     dict = {

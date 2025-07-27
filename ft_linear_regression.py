@@ -1,18 +1,22 @@
-from utils.normalization import data_normalization, get_list
-from utils.get_data import get_data
-from utils.errors import print_error
 import sys
 import json
 import matplotlib.pyplot as plt
+
+from utils.normalization import data_normalization, get_list
+from utils.get_data import get_data
+from utils.errors import print_error
+
 
 g_learning_rate = 0.75
 g_max_iteration = 5000
 g_min_slope = 0.0000001
 g_display_speed = 0.075
 
+
 class args:
     KM = 'km'
     PR = 'price'
+
 
 class LinearRegression:
     

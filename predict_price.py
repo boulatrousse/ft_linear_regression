@@ -1,6 +1,7 @@
-from utils.errors import print_error
-from utils.create_json_file import create_json_file
 import json
+
+from utils.errors import print_error
+
 
 def is_input_valid(input: str) -> bool:
     if not input.isdigit():

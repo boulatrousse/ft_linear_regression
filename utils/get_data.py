@@ -1,6 +1,8 @@
 import os
 import csv
+
 from utils.errors import print_error
+
 
 def get_list(data: list[str], arg: str) -> list[str]:
     list = []
