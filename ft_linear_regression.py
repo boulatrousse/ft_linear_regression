@@ -155,9 +155,12 @@ def main():
     args = sys.argv
 
     if len(args) != 2:
-        print_error("ERROR: usage: python parsing.py [data.csv].", True)
+        print_error("Error: usage: python ft_linear_regression data.csv.", True)
         
-    data = get_data(args[1])
+    try:
+        data = get_data(args[1])
+    except:
+        print_error("Error: usage: python ft_linear_regression data.csv.", True)
     
     model = LinearRegression(data, g_learning_rate)
     model.train_model()
